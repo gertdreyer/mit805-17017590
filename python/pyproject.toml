@@ -1,0 +1,28 @@
+[project]
+name = "mit-805-17017590"
+version = "0.1.0"
+description = ""
+authors = [{ name = "Your Name", email = "you@example.com" }]
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy (>=2.3.2,<3.0.0)",
+    "pandas (>=2.1.0,<3.0.0)",
+    "scikit-learn (>=1.3.2,<2.0.0)",
+    "matplotlib (>=3.10.6,<4.0.0)",
+    "seaborn (>=0.12.2,<1.0.0)",
+    "tensorflow (>=2.20.0,<3.0.0)",
+    "python-dotenv (>=1.0.0,<2.0.0)",
+    "boto3 (>=1.28.39,<2.0.0)",
+
+]
+
+[tool.dotenv]
+env-file = "../.env"
+
+[tool.poetry]
+package-mode = false
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
