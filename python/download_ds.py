@@ -55,11 +55,23 @@ def main():
             download_file_from_s3(file_key, dest_path)
         if dest_path.endswith(".zip"):
             extract_zip(dest_path, os.path.join(data_dir, "temp"))
+            # extract inner zip files if any
+            for inner_zip in glob.glob(
+                os.path.join(data_dir, "temp", "**/*.zip"), recursive=True
+            ):
+                extract_zip(inner_zip, os.path.join(data_dir, "temp"))
+
             # move all csv files to data_dir using globs
             for csv_file in glob.glob(
                 os.path.join(data_dir, "temp", "**/*.csv"), recursive=True
             ):
-                shutil.move(csv_file, data_dir)
+                if os.path.exists(os.path.join(data_dir, os.path.basename(csv_file))):
+                    print(
+                        f"File {os.path.join(data_dir, os.path.basename(csv_file))} already exists. Skipping move."
+                    )
+                else:
+                    shutil.move(csv_file, data_dir)
+
             shutil.rmtree(os.path.join(data_dir, "temp"))
 
 

@@ -126,3 +126,4 @@ local_settings.py
 
 # ignore data dir
 data/
+out/

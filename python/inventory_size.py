@@ -6,7 +6,7 @@ def main():
     total_size = 0
     for root, dirs, files in os.walk(data_dir):
         for file in files:
-            if file.endswith(".csv"):
+            if file.startswith("202") and file.endswith(".csv"):
                 file_path = os.path.join(root, file)
                 file_size = os.path.getsize(file_path)
                 total_size += file_size
